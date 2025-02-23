@@ -1,0 +1,261 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="certificates-section py-5 mt-5">
+    <div class="container">
+        <!-- Header -->
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="">
+                <h1 class="display-4 fw-bold mb-3 text-center text-white bg-dark bg-gradient  py-2">My Certifications</h1>
+                <p class="lead text-muted">Professional certifications and achievements</p>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-award"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Certificates Grid -->
+        <div class="row g-4">
+            {% for certificate in certificates %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter }}00">
+                <div class="certificate-card h-100"> <!-- Added h-100 here -->
+                    <div class="card border-0 shadow-lg h-100">
+                        <!-- Certificate Image -->
+                        <div class="certificate-image position-relative">
+                            <div class="image-wrapper"> <!-- Added wrapper div -->
+                                <img src="{{ certificate.image.url }}" 
+                                     alt="{{ certificate.title }}" 
+                                     class="card-img-top"
+                                     data-bs-toggle="modal"
+                                     data-bs-target="#certModal{{ certificate.id }}">
+                            </div>
+                            <div class="certificate-overlay">
+                                {% comment %} <button class="btn btn-light btn-sm" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#certModal{{ certificate.id }}">
+                                    <i class="fas fa-expand-alt me-2"></i>View
+                                </button> {% endcomment %}
+                            </div>
+                        </div>
+                        
+                        <!-- Certificate Details -->
+                        <div class="card-body p-4">
+                            <div class="certificate-badge mb-3">
+                                <span class="badge bg-primary">{{ certificate.category }}</span>
+                                <span class="badge bg-secondary">{{ certificate.date|date:"M Y" }}</span>
+                            </div>
+                            <h5 class="card-title fw-bold mb-3">{{ certificate.title }}</h5>
+                            <p class="card-text text-muted description">{{ certificate.description|truncatewords:20 }}</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <img src="{{ certificate.issuer_logo }}" 
+                                     alt="{{ certificate.issuer }}" 
+                                     class="issuer-logo me-2">
+                                <span class="issuer-name">{{ certificate.issuer }}</span>
+                            </div>
+                        </div>
+        
+                        <!-- Certificate Actions -->
+                        <div class="card-footer bg-transparent border-0 p-4 mt-auto"> <!-- Added mt-auto -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{{ certificate.credential_url }}" 
+                                   class="btn btn-outline-primary btn-sm"
+                                   target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Verify
+                                </a>
+                                <div class="certificate-meta">
+                                    <span class="text-muted">
+                                        <i class="fas fa-clock me-1"></i>
+                                        {{ certificate.duration }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+
+                <!-- Certificate Modal -->
+                <div class="modal fade" id="certModal{{ certificate.id }}" tabindex="-1">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header border-0">
+                                <h5 class="modal-title fw-bold">{{ certificate.title }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <img src="{{ certificate.image.url }}" 
+                                     alt="{{ certificate.title }}" 
+                                     class="img-fluid">
+                            </div>
+                            <div class="modal-footer border-0">
+                                <a href="{{ certificate.credential_url }}" 
+                                   class="btn btn-primary"
+                                   target="_blank">
+                                    <i class="fas fa-external-link-alt me-2"></i>Verify Certificate
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Bootstrap modals
+        var modals = document.querySelectorAll('.modal');
+        modals.forEach(function(modal) {
+            new bootstrap.Modal(modal);
+        });
+    
+        // Add click handlers for certificate images and buttons
+        const certificateImages = document.querySelectorAll('.certificate-image img, .certificate-overlay button');
+        certificateImages.forEach(element => {
+            element.addEventListener('click', function() {
+                const modalId = this.dataset.bsTarget || this.closest('button').dataset.bsTarget;
+                const modalElement = document.querySelector(modalId);
+                const modal = new bootstrap.Modal(modalElement);
+                modal.show();
+            });
+        });
+    
+        // Add zoom effect on certificate hover
+        const certImages = document.querySelectorAll('.certificate-image img');
+        certImages.forEach(img => {
+            img.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            
+            img.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    
+        // Add loading state for verify buttons
+        const verifyButtons = document.querySelectorAll('.btn-outline-primary');
+        verifyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Verifying...';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 1000);
+            });
+        });
+    });
+    </script> 
+    
+    <!-- Enhanced CSS -->
+    <style>
+        /* Card and Image Styles */
+        .certificate-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .card {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .certificate-image {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+    
+        .image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    
+        .certificate-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    
+        /* Card Body Styles */
+        .card-body {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .description {
+            flex-grow: 1;
+            min-height: 48px; /* Approximately 2 lines of text */
+            overflow: hidden;
+        }
+    
+        /* Badge Styles */
+        .certificate-badge .badge {
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+        }
+    
+        /* Issuer Logo Styles */
+        .issuer-logo {
+            width: 30px !important;
+            height: 30px !important;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 1px solid #dee2e6;
+            padding: 2px;
+        }
+    
+        /* Overlay Styles */
+        .certificate-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    
+        .certificate-image:hover .certificate-overlay {
+            opacity: 1;
+        }
+    
+        .certificate-image:hover img {
+            transform: scale(1.1);
+        }
+    
+        /* Modal Styles */
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+    
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .certificate-image {
+                padding-top: 75%; /* 4:3 Aspect Ratio for mobile */
+            }
+        }
+    </style>
+
+{% endblock %}

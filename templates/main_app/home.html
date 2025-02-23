@@ -1,0 +1,385 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block title %}Vikram-Home{% endblock title %}
+
+{% block content %}
+<!-- Hero Section with Particles Background -->
+<div id="particles-js" class="position-fixed w-100 h-100" style="z-index: 0;"></div>
+
+<!-- Hero Section -->
+<section class="hero min-vh-100 d-flex align-items-center position-relative" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+                <div class="hero-content text-white">
+                    <span class="badge bg-primary px-3 py-2 mb-4 animate__animated animate__fadeInDown">Welcome to my Portfolio</span>
+                    <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInUp">
+                        Hi, I'm <span class="text-primary">Vikram Verma</span>
+                        <span class="typed-text"></span>
+                    </h1>
+                    <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+                      Motive to learn Transforming ideas into exceptional digital experiences with cutting-edge technology
+                    </p>
+                    <div class="hero-btns animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="{% url "projects" %}" class="btn btn-primary btn-lg me-3 custom-btn">
+                            <i class="fas fa-code me-2"></i>View My Work
+                        </a>
+                        <a href="{% url "contact" %}" class="btn btn-outline-light btn-lg custom-btn">
+                            <i class="fas fa-envelope me-2"></i>Contact Me
+                        </a>
+                    </div>
+                    <div class="mt-5 social-links animate__animated animate__fadeInUp animate__delay-3s">
+                        <a href="https://www.github.com/Vvikram10" class="btn btn-floating me-3"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/vvikram10" class="btn btn-floating me-3"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="btn btn-floating me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/v_vik_ram_?igsh=cmMxaDhuOTJzb3Vr" class="btn btn-floating"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block" data-aos="fade-left">
+                <div class="hero-image text-center">
+                    <img src="{% static 'images/pict.png' %}" alt="Hero Illustration" class="img-fluid rounded-circle border-light shadow-sm animate__animated animate__fadeInRight">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Preview Section -->
+<section class="about-preview py-5" id="about-preview">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right">
+                <div class="about-image position-relative">
+                    <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture" class="img-fluid rounded-3 shadow-lg">
+                    <div class="experience-badge">
+                        <span class="years">6</span>
+                        <span class="text">Months of Experience</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+                <div class="about-content ps-lg-4">
+                    <h6 class="text-primary fw-bold mb-3">ABOUT ME</h6>
+                    <h2 class="display-6 fw-bold mb-4">Hi` i am Vikram Verma</h2>
+                    <p class="lead text-muted mb-4">
+                        Passionate Full Stack Developer with expertise in creating innovative and scalable web solutions. 
+                        Specialized in modern technologies and best practices.
+                    </p>
+                    <div class="tech-stack mb-4">
+                        <div class="row g-3">
+                            <div class="col-auto">
+                                <span class="tech-badge python">
+                                    <i class="fab fa-python me-2"></i>Python
+                                </span>
+                            </div>
+                            <div class="col-auto">
+                                <span class="tech-badge django">
+                                    <i class="fab fa-django me-2"></i>Django
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge numpy">
+                                    <i class="fab fa-python me-2"></i>NumPy
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge pandas">
+                                    <i class="fab fa-python me-2"></i>Pandas
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge matplotlib">
+                                    <i class="fas fa-chart-line me-2"></i>Matplotlib
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge scikit-learn">
+                                    <i class="fas fa-brain me-2"></i>Scikit-learn
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge pillow">
+                                    <i class="fas fa-image me-2"></i>Pillow
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge aws">
+                                    <i class="fab fa-aws me-2"></i>AWS
+                                </span>
+                            </div>
+                            
+                            <div class="col-auto">
+                                <span class="tech-badge javascript">
+                                    <i class="fab fa-js me-2"></i>JavaScript
+                                </span>
+                            </div>
+                            <div class="col-auto">
+                                <span class="tech-badge react">
+                                    <i class="fab fa-react me-2"></i>React-Native
+                                </span>
+                            </div>
+                            <div class="col-auto">
+                                <span class="tech-badge node">
+                                    <i class="fab fa-node-js me-2"></i>Node.js
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'about' %}" class="btn btn-primary btn-lg custom-btn">
+                        <i class="fas fa-user me-2"></i>Learn More About Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects -->
+<section class="featured-projects py-5 bg-light" id="featured">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <h6 class="text-primary fw-bold mb-3">PORTFOLIO</h6>
+            <h2 class="display-6 fw-bold">Featured Projects</h2>
+            <div class="divider-custom mx-auto">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            {% for project in featured_projects %}
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ forloop.counter|add:1 }}">
+                <div class="project-card card border-0 shadow-lg h-100">
+                    <div class="project-image position-relative">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="card-img-top">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="{{ project.live_url }}" class="btn btn-light btn-sm me-2">
+                                    <i class="fas fa-external-link-alt me-2"></i>Live Demo
+                                </a>
+                                <a href="{{ project.github_url }}" class="btn btn-light btn-sm">
+                                    <i class="fab fa-github me-2"></i>GitHub
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mb-3">{{ project.title }}</h5>
+                        <p class="card-text text-muted">{{ project.description }}</p>
+                        <div class="project-tech mt-3">
+                            {% for tech in project.technologies.all %}
+                            <span class="badge bg-primary me-2">{{ tech.name }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-5" data-aos="fade-up">
+            <a href="{% url 'projects' %}" class="btn btn-primary btn-lg custom-btn">
+                <i class="fas fa-project-diagram me-2"></i>View All Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Add this CSS -->
+<style>
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        overflow: hidden;
+    }
+
+    .typed-text::after {
+        content: '|';
+        animation: blink 1s infinite;
+    }
+
+    .custom-btn {
+        padding: 12px 30px;
+        border-radius: 30px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .custom-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .btn-floating {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-floating:hover {
+        background: var(--bs-primary);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    /* About Section */
+    .experience-badge {
+        position: absolute;
+        bottom: -20px;
+        right: -20px;
+        background: var(--bs-primary);
+        color: white;
+        padding: 20px;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .experience-badge .years {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 1;
+    }
+
+    .tech-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .tech-badge.python { background: #3776AB; color: white; }
+    .tech-badge.django { background: #092E20; color: white; }
+    .tech-badge.javascript { background: #F7DF1E; color: black; }
+    .tech-badge.react { background: #61DAFB; color: black; }
+    .tech-badge.node { background: #339933; color: white; }
+    .tech-badge.numpy {
+        background-color: #013243;  /* NumPy color */
+        color: white;
+    }
+    
+    .tech-badge.pandas {
+        background-color: #150c1e;  /* Pandas color */
+        color: white;
+    }
+    
+    .tech-badge.matplotlib {
+        background-color: #005b96;  /* Matplotlib color */
+        color: white;
+    }
+    
+    .tech-badge.scikit-learn {
+        background-color: #f7b92b;  /* Scikit-learn color */
+        color: white;
+    }
+    
+    .tech-badge.pillow {
+        background-color: #1e76a0;  /* Pillow color */
+        color: white;
+    }
+    
+    .tech-badge.aws {
+        background-color: #ff9900;  /* AWS color */
+        color: white;
+    }
+
+    /* Projects Section */
+    .project-card {
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .project-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+
+    .divider-custom {
+        max-width: 200px;
+        margin: 1.5rem auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .divider-custom-line {
+        flex-grow: 1;
+        height: 2px;
+        background: var(--bs-primary);
+    }
+
+    .divider-custom-icon {
+        padding: 0 1rem;
+        color: var(--bs-primary);
+    }
+</style>
+
+<!-- Add this JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    // Typed.js initialization
+    new Typed('.typed-text', {
+        strings: ['Full Stack Developer', 'Python Developer', 'Django Developer','Intrested DataScience'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        loop: true
+    });
+
+    // Particles.js initialization
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80 },
+            color: { value: '#ffffff' },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5 },
+            size: { value: 3 },
+            move: { enable: true, speed: 2 }
+        }
+    });
+
+    // AOS initialization
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,303 @@
+{% extends 'main_app/base.html' %}
+{% load static %}
+{% block title %}Vikram-About{% endblock title %}
+
+{% block content %}
+<!-- About Section -->
+<section class="about-section py-5 mt-5">
+    <div class="container">
+        <!-- Section Header -->
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <div class="">
+                <h1 class="display-4 fw-bold mb-3 text-center bg-gradient  text-white bg-dark  py-2">About Me</h1>
+                <p class="lead text-muted">Passionate about creating innovative web solutions</p>
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-code"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Section -->
+        <div class="row g-5 mb-5">
+            <!-- Personal Info -->
+            <div class="col-lg-4" data-aos="fade-right">
+                <div class="card border-0 shadow-sm text-center">
+                    <div class="card-body p-4">
+                        <div class="profile-image-wrapper mb-4">
+                            <img src="{% static 'images/profile.jpeg' %}" 
+                                 alt="Vikram" 
+                                 class="rounded-circle img-thumbnail"
+                                 style="width: 200px; height: 200px; object-fit: cover;">
+                        </div>
+                        <h2 class="h3 mb-2">Vikram Verma</h2>
+                        <p class="text-primary mb-4"> Python Full Stack Developer</p>
+                        
+                        <div class="personal-info">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-briefcase text-primary me-3"></i>
+                                <span>6 Months of Experience</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-location-dot text-primary me-3"></i>
+                                <span>Noida Sector 66 UP</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-envelope text-primary me-3"></i>
+                                <span>vvikram7102@gmail.com</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <a href="#" class="btn btn-primary me-2">
+                                <i class="fas fa-download me-2"></i>Download CV
+                            </a>
+                            <a href="{% url 'contact' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-envelope me-2"></i>Contact Me
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="col-lg-8" data-aos="fade-left">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="card-title mb-4">Technical Skills</h3>
+                        <div class="row g-4">
+                            {% for skill in skills %}
+                            <div class="col-md-6">
+                                <div class="skill-item mb-3">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span class="fw-bold">{{ skill.name }}</span>
+                                        <span class="text-primary">{{ skill.percentage }}%</span>
+                                    </div>
+                                    <div class="progress" style="height: 10px;">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                                             role="progressbar" 
+                                             style="width: {{ skill.percentage }}%" 
+                                             aria-valuenow="{{ skill.percentage }}" 
+                                             aria-valuemin="0" 
+                                             aria-valuemax="100">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Experience Timeline -->
+        <div class="row" data-aos="fade-up">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h3 class="card-title mb-4">Experience</h3>
+                        <div class="timeline">
+                            <!-- Timeline Item 1 -->
+                            <div class="timeline-item pb-4">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <div class="timeline-date text-muted mb-3">
+                                                <i class="fas fa-calendar-alt me-2"></i>05/2024 - 06/2024 
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <h4 class="timeline-title">Python Developer (Tech Support)</h4>
+                                            <p class="text-primary mb-2">MCPS Ghaziabad Value Added Program</p>
+                                            <p class="timeline-text">Provided technical support to development teams, troubleshooting and
+                                                resolving issues related to Python and Django applications.
+                                                I mentored junior developers, offering guidance on best practices in
+                                                Django, Python, and web development.
+                                                My responsibilities included assisting with debugging, conducting code
+                                                reviews, and optimizing Django applications, ensuring smooth integration
+                                                of REST APIs and database models.</p>
+                                            <div class="timeline-tags">
+                                                <span class="badge bg-primary me-2">Python</span>
+                                                <span class="badge bg-primary me-2">Django</span>
+                                                <span class="badge bg-primary">Rest API</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Timeline Item 2 -->
+                            <div class="timeline-item pb-4">
+                                <div class="timeline-marker"></div>
+                                <div class="timeline-content">
+                                    <div class="row">
+                                        <div class="col-lg-3">
+                                            <div class="timeline-date text-muted mb-3">
+                                                <i class="fas fa-calendar-alt me-2"></i>02/2024 - 05/2024
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9">
+                                            <h4 class="timeline-title">Python Full Stack Development (Internship)
+                                            </h4>
+                                            <p class="text-primary mb-2">Microdot Tech Aspire Solution Pvt Ltd
+                                                .</p>
+                                            <p class="timeline-text">During my internship, I had the opportunity to work on full-stack web
+                                                development, where I contributed to both the back-end and front-end
+                                                development of web applications.
+                                                On the front-end, I developed dynamic and responsive user interfaces
+                                                with HTML, CSS, and JavaScript and Python with Django on backend.
+                                                I also used Git and GitHub for version control and PostgreSQL Database. Collaborated with design team to implement responsive layouts.</p>
+                                            <div class="timeline-tags">
+                                                <span class="badge bg-primary">Python</span>
+                                                <span class="badge bg-primary me-2">Django</span>
+                                                <span class="badge bg-primary me-2">Html</span>
+                                                <span class="badge bg-primary me-2">Css</span>
+                                                <span class="badge bg-primary me-2">Bootstrap</span>
+                                                <span class="badge bg-primary me-2">JavaScript</span>
+                                                <span class="badge bg-primary me-2">PostgreSQL</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Add this CSS to your style.css or in a style block -->
+<style>
+    .about-section {
+        background-color: #f8f9fa;
+    }
+
+    .divider-custom {
+        margin: 1.25rem 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .divider-custom-line {
+        width: 100%;
+        max-width: 7rem;
+        height: 0.25rem;
+        background-color: #dee2e6;
+        border-radius: 1rem;
+        margin: 0 1rem;
+    }
+
+    .divider-custom-icon {
+        color: #0d6efd;
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 3rem;
+        margin: 0;
+    }
+
+    .timeline-marker {
+        position: absolute;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: #0d6efd;
+        margin-top: 0.75rem;
+    }
+
+    .timeline-marker::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        width: 2px;
+        height: 100%;
+        background: #dee2e6;
+        transform: translateX(-50%);
+    }
+
+    .timeline-item:last-child .timeline-marker::before {
+        display: none;
+    }
+
+    .timeline-date {
+        font-weight: 500;
+    }
+
+    .timeline-title {
+        color: #212529;
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-text {
+        color: #6c757d;
+        margin-bottom: 1rem;
+    }
+
+    .badge {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+    }
+
+    .progress {
+        background-color: #e9ecef;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+
+    .progress-bar {
+        background-color: #0d6efd;
+        transition: width 1s ease;
+    }
+
+    @media (max-width: 991.98px) {
+        .timeline {
+            padding-left: 2rem;
+        }
+        
+        .timeline-date {
+            margin-bottom: 1rem;
+        }
+    }
+</style>
+
+<!-- Add this JavaScript for animations -->
+<script>
+$(document).ready(function() {
+    // Animate skill bars on scroll
+    function animateSkills() {
+        $('.progress-bar').each(function() {
+            const progressBar = $(this);
+            const width = progressBar.attr('aria-valuenow') + '%';
+            progressBar.css('width', '0%').animate({
+                width: width
+            }, 1000);
+        });
+    }
+
+    // Initial animation
+    setTimeout(animateSkills, 500);
+
+    // Animate on scroll
+    $(window).scroll(function() {
+        const skillsSection = $('.skills-section');
+        if (skillsSection.length) {
+            const skillsPosition = skillsSection.offset().top;
+            const scrollPosition = $(window).scrollTop() + $(window).height();
+            
+            if (scrollPosition > skillsPosition) {
+                animateSkills();
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
