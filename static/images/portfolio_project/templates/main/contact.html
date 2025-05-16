@@ -1,0 +1,71 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Naveen - contact{% endblock  %}
+{% block content %}
+<div class="container pt-5 contact-container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6 animate__animated animate__fadeInLeft">
+            <h1 class="display-6 bg-dark  fw-bold py-2 text-light text-center mb-4"><span class="text-primary">Get In</span> Touch</h1>
+            <form method="post" class="contact-form border-dark shadow-sm">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control border-dark" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control border-dark" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="subject" class="form-control border-dark" placeholder="Subject" required>
+                </div>
+                <div class="mb-3">
+                    <textarea name="message" class="form-control border-dark" rows="2" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm ">Send Message</button>
+            </form>
+            <div class="social-links mt-4">
+                    {% for link in social_links %}
+                    <a href="{{ link.url }}" target="_blank" class="social-icon text-{{ link.icon|lower }}">
+                        <i class="bi bi-{{ link.icon }} fs-5 rounded-circle text-{{ link.icon|lower }}"></i>
+                        {% comment %} <i class="bi bi-linkedin fs-2 me-3 text-linkedin"></i>  <!-- Medium size icon --> {% endcomment %}
+
+                    </a>
+                    {% endfor %}
+                </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .contact-container {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        padding: 50px 0;
+    }
+
+    .contact-form {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        border:1px solid black;
+    }
+
+    .social-icon {
+        color: #333;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-icon:hover {
+        transform: scale(1.2);
+    }
+
+    .text-linkedin { color: #0077B5 !important; }
+    .text-github { color: #333; }
+    .text-twitter { color: #1DA1F2; }
+    i.text-instagram { color: #E1306C !important;}
+    .text-facebook { color: #3B5998; }
+</style>
+{% endblock %}
